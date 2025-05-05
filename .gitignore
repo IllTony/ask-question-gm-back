@@ -129,6 +129,7 @@ celerybeat.pid
 
 # Environments
 .env
+.env.dev
 .venv
 env/
 venv/
@@ -172,3 +173,13 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Poetry lock
+poetry.lock
+
+# Config IDE
+.vscode/
+setup.cfg
+
+# Docker
+docker-compose.dev*
