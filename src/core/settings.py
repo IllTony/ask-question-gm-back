@@ -37,6 +37,11 @@ class Setting(BaseSettings):
     # Пагинация
     PAGE_SIZE: int = Field(50, alias="PAGE_SIZE")
 
+    # Логгирование
+    LOGGING_LEVEL: str = Field("DEBUG", alias="LOGGING_LEVEL")
+    LOG_TO_FILE: str = Field("TRUE", alias="LOG_TO_FILE")
+    LOG_DIR: str = Field("./logs", alias="LOG_DIR")
+
     @property
     def ALLOWED_HOSTS_LIST(self) -> list:
         return [] if self.ALLOWED_HOSTS == "" else self.ALLOWED_HOSTS.split(",")

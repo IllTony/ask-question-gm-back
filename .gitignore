@@ -183,3 +183,7 @@ setup.cfg
 
 # Docker
 docker-compose.dev*
+
+# local debug files
+media/
+logs/
