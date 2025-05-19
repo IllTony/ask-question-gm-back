@@ -1,8 +1,6 @@
-from uuid import UUID
-import datetime as dt
-from typing import Annotated, Literal, Union
+from typing import Annotated
 
-from fastapi import APIRouter, Body, Depends, File, Form, HTTPException, Query, Request, UploadFile, status
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
 
 
 from src.services.question_service import QuestionService, get_question_service
