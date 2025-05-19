@@ -1,0 +1,35 @@
+version: '3.9'
+services:
+  ask_question_service:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    image: ask-question-service
+    container_name: ask-question-service
+    ports:
+      - 9000:8000
+    volumes:
+      - ./logs:/app/logs
+      - ./media:/app/media
+    env_file:
+      - .env
+    depends_on:
+      - ask_question_postgres
+  ask_question_postgres:
+    image: postgres:15.3-alpine
+    container_name: ask_question_db
+    env_file:
+      - .env
+    volumes:
+      - question-db-data:/var/lib/postgresql/data
+    ports:
+      - '5485:5432'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U question_user -d question_db']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  question-db-data:
